@@ -5,9 +5,9 @@ import Grid from '@material-ui/core/Grid'
 import { useImmer } from "use-immer"
 
 import Item from './Agency'
-import ItemSkeleton from './ItemSkeleton'
+import ItemSkeleton from '../common/ItemSkeleton'
 
-import { getAgencyList } from '../services/Buses'
+import { getAgencyList } from '../../services/Buses'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

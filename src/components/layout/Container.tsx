@@ -1,5 +1,4 @@
 import React from 'react'
-import { useImmer } from "use-immer"
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,14 +7,10 @@ import {
 } from "react-router-dom";
 
 import Header from './Header'
-import AgencyList from './AgencyList'
-import '../assets/styles/index.css'
+import AgencyList from '../agency/AgencyList'
+import '../../assets/styles/index.css'
 
 const Container = () => {
-  const [state, setState] = useImmer({
-    
-  })
-
   return (
     <Router>
       <Header/>

@@ -1,10 +1,10 @@
-### ecommerce demo app
-demo https://sourav-shoe-mart.herokuapp.com/
+### Bus Schedule demo app
+This is a demo of showing transit buses available using public api called nextbus
 ## installation
 Follow these steps
 ```
-git clone https://github.com/Sourav-prince/ecommerce_demo.git
-cd ecommerce_demo
+git clone https://github.com/Sourav-prince/bus-schedule.git
+cd bus-schedule
 npm install
 npm start
 ```

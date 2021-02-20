@@ -7,7 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 
-import AgencyLogo from '../assets/images/agency.jpg'
+import AgencyLogo from '../../assets/images/agency.jpg'
 
 const useStyles = makeStyles({
   root: {

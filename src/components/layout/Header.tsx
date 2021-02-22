@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useImmer } from "use-immer";
+import { useLocation } from "react-router-dom";
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -21,8 +23,32 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 
-const Container = (props:any) => {
+const Header = (props:any) => {
   const classes = useStyles();
+  const location = useLocation();
+  const [state, setState] = useImmer({
+    title: ''
+  })
+  
+  const setTitle = (val:string) => {
+    setState(draft => {
+      draft.title = val;
+    });
+  }
+
+  useEffect(()=>{
+    const path = location.pathname.split('/');
+    if(path.length === 3){
+      setTitle('Bus Timetable')
+    }else{
+      if(location.pathname === '/'){
+        setTitle('Select Agency')
+      }else{
+        setTitle('Select Bus Route')
+      }
+    }
+    // eslint-disable-next-line
+  },[location])
 
   return (
     <div className={classes.root}>
@@ -32,7 +58,7 @@ const Container = (props:any) => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            Shoes
+            {state.title}
           </Typography>
         </Toolbar>
       </AppBar>
@@ -40,4 +66,4 @@ const Container = (props:any) => {
   );
 }
 
-export default Container
+export default Header

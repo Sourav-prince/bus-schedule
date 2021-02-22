@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react'
+import React, { useEffect, useMemo } from 'react';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import { useImmer } from "use-immer";
 import { useParams } from 'react-router-dom';
@@ -32,11 +32,13 @@ const List = (props:any) => {
   const [state, setState] = useImmer({
     list:[]
   })
+
   const resetList = () => {
     setState(draft => {
       draft.list = [];
     });
   }
+  
   const loadItems = async()=>{
     try{
       let res:any

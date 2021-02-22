@@ -30,9 +30,8 @@ const Agency = (props:any) => {
   const location = useLocation();
   const history = useHistory();
 
-
   const handleClick = ()=> {
-    history.push(`/${data.tag}`);
+    history.push(`${location.pathname === '/' ? '': location.pathname+'/'}${data.tag}`);
   }
 
   return (

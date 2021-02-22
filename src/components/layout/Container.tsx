@@ -7,6 +7,7 @@ import {
 
 import Header from './Header'
 import AgencyBusList from '../common/AgencyBusList'
+import BusTimeTable from '../TimeTable/BusTable'
 import '../../assets/styles/index.css'
 
 const Container = () => {
@@ -14,6 +15,9 @@ const Container = () => {
     <Router>
       <Header/>
       <Switch>
+        <Route path="/:agencyName/:busTag">
+          <BusTimeTable/>
+        </Route>
         <Route path="/:agencyName">
           <AgencyBusList/>
         </Route>

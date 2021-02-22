@@ -1,13 +1,14 @@
 import React, { useEffect, useMemo } from 'react'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container'
-import Grid from '@material-ui/core/Grid'
-import { useImmer } from "use-immer"
+import { useImmer } from "use-immer";
+import { useParams } from 'react-router-dom';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
 
-import Item from './Agency'
-import ItemSkeleton from '../common/ItemSkeleton'
+import Item from './Item';
+import ItemSkeleton from './ItemSkeleton';
 
-import { getAgencyList } from '../../services/Buses'
+import { getAgencyBuses, getAgencyList } from '../../services/Buses';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -26,16 +27,27 @@ const useStyles = makeStyles((theme: Theme) =>
 const List = (props:any) => {
 
   const classes = useStyles();
+  const params:any = useParams();
 
   const [state, setState] = useImmer({
     list:[]
   })
-
+  const resetList = () => {
+    setState(draft => {
+      draft.list = [];
+    });
+  }
   const loadItems = async()=>{
     try{
-      const res = await getAgencyList()
+      let res:any
+      resetList()
+      if(params?.agencyName){
+        res = await getAgencyBuses(params.agencyName)
+      }else{
+        res = await getAgencyList()
+      }
       setState(draft => {
-        draft.list = res.agency;
+        draft.list = params?.agencyName ? res.route : res.agency;
       });
     }catch(e){}
   }
@@ -43,7 +55,7 @@ const List = (props:any) => {
   useEffect(()=>{
     loadItems()
     // eslint-disable-next-line
-  },[])
+  },[params])
 
   const listLoader = useMemo(()=>(
     <>

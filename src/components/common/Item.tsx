@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory, useLocation } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -26,9 +27,17 @@ const useStyles = makeStyles({
 const Agency = (props:any) => {
   const classes = useStyles()
   const { data } = props
+  const location = useLocation();
+  const history = useHistory();
+
+
+  const handleClick = ()=> {
+    history.push(`/${data.tag}`);
+  }
+
   return (
     <Card className={classes.root}>
-      <CardActionArea>
+      <CardActionArea onClick={handleClick}>
         <CardMedia
           className={classes.media}
           image={AgencyLogo}
@@ -50,7 +59,7 @@ const Agency = (props:any) => {
           color="primary" 
           variant="subtitle1" 
           component="div">
-          {data.regionTitle}
+          {data.regionTitle || data.tag}
         </Typography>
       </CardActions>
     </Card>

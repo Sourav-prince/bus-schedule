@@ -3,11 +3,10 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect
 } from "react-router-dom";
 
 import Header from './Header'
-import AgencyList from '../agency/AgencyList'
+import AgencyBusList from '../common/AgencyBusList'
 import '../../assets/styles/index.css'
 
 const Container = () => {
@@ -15,12 +14,11 @@ const Container = () => {
     <Router>
       <Header/>
       <Switch>
-        <Redirect exact from="/" to="/agency" />
-        <Route path="/agency">
-          <AgencyList/>
+        <Route path="/:agencyName">
+          <AgencyBusList/>
         </Route>
-        <Route path="/about">
-          hiiii
+        <Route path="/">
+          <AgencyBusList/>
         </Route>
       </Switch>
     </Router>

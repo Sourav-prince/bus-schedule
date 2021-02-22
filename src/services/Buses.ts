@@ -20,7 +20,17 @@ const getAgencyBuses = async (agencyTag: string) => {
   }
 }
 
+const getBusSchedule = async (agencyTag: string, busNumber: string) => {
+  try {
+    const response = await axios.get(baseUrl+`?command=schedule&a=${agencyTag}&r=${busNumber}`)
+    return response.data
+  } catch (error) {
+    throw error.response
+  }
+}
+
 export  {
   getAgencyList, 
-  getAgencyBuses
+  getAgencyBuses,
+  getBusSchedule
 }

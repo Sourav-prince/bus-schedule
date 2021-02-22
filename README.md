@@ -10,7 +10,9 @@ npm start
 ```
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 ## Description
-Dynamic pricing for ecommerce platform
+A user needs to select the bus agency.
+Then select the bus route.
+Then click on a bus to get the timetable
 - React js
 - axios
 - Typescript
